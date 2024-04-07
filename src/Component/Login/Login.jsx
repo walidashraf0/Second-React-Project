@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Style from './Login.module.css';
 import { useFormik } from 'formik';
 import * as Yup from 'yup'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'
 import { FallingLines } from 'react-loader-spinner';
+import { UserToken } from '../../Context/UserToken';
 
 
 export default function Login() {
@@ -12,6 +13,7 @@ export default function Login() {
     let navigate = useNavigate()
     const [error, setError] = useState(null)
     const [loading, setLoading] = useState(false)
+    let {setUserToken} = useContext(UserToken)
 
     async function loginSubmit(values) {
         setLoading(true)
@@ -23,6 +25,7 @@ export default function Login() {
         if (data.message == 'success') {
             setLoading(false)
             localStorage.setItem('userToken', data.token)
+            setUserToken(data.token)
             navigate('/')
         }
     }
