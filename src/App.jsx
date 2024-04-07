@@ -10,25 +10,31 @@ import Brands from './Component/Brands/Brands'
 import Products from './Component/Products/Products'
 import Categories from './Component/Categories/Categories'
 import Navbar from './Component/Navbar/Navbar'
+import CounterContextProvider from './Context/CounterContext'
+
+
+
 export default function App() {
 
   let routers = createBrowserRouter(
     [
       {
-        path: '/', element: <Layout/>, children: [
-          {index: true, element: <Home/>},
-          {path: 'cart', element: <Cart/>},
-          {path: 'brands', element: <Brands/>},
-          {path: 'categories', element: <Categories/>},
-          {path: 'products', element: <Products/>},
-          {path: 'login', element: <Login/>},
-          {path: 'register', element: <Register/>},
-          {path: '*', element: <Notfound/>},
+        path: '/', element: <Layout />, children: [
+          { index: true, element: <Home /> },
+          { path: 'cart', element: <Cart /> },
+          { path: 'brands', element: <Brands /> },
+          { path: 'categories', element: <Categories /> },
+          { path: 'products', element: <Products /> },
+          { path: 'login', element: <Login /> },
+          { path: 'register', element: <Register /> },
+          { path: '*', element: <Notfound /> },
         ]
       }
     ]
   )
   return <>
-  <RouterProvider router={routers}></RouterProvider>
+    <CounterContextProvider>
+      <RouterProvider router={routers}></RouterProvider>
+    </CounterContextProvider>
   </>
 }

@@ -22,6 +22,7 @@ export default function Login() {
             })
         if (data.message == 'success') {
             setLoading(false)
+            localStorage.setItem('userToken', data.token)
             navigate('/')
         }
     }
