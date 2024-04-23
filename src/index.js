@@ -8,6 +8,8 @@ import App from './App';
 import {QueryClient, QueryClientProvider} from 'react-query'
 import UserContextProvider from './Context/CounterContext'
 import { ReactQueryDevtools } from 'react-query/devtools'
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css"
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
