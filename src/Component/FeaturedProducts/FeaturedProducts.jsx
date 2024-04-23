@@ -12,7 +12,13 @@ export default function FeaturedProducts() {
         return axios.get(`https://ecommerce.routemisr.com/api/v1/products`);
     }
 
-    let { isLoading, isError, data, isFetching } = useQuery('featuredProducts', getFeaturedProducts);
+    let { isLoading, isError, data, isFetching, refetch } = useQuery('featuredProducts', getFeaturedProducts, {
+        cacheTime: 3000,
+        // refetchOnMount: false,
+        // staleTime: 30000,
+        refetchInterval: 3000,
+        enabled: false
+    });
     console.log();
 
     // const [products, setProducts] = useState([])
@@ -40,6 +46,7 @@ export default function FeaturedProducts() {
                 visible={true}
             />
         </div> : <div className="container py-2">
+            <button className='btn bg-main text-white w-100' onClick={()=> refetch()}>Get Products</button>
             <h2>Featured Products</h2>
             <div className="row">
                 {data?.data.data.map((product) => <div key={product.id} className="col-md-2 gy-4">

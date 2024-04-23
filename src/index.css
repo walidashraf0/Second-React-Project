@@ -31,9 +31,13 @@ a , a:hover{
 }
 .product .btn 
 {
-    transition: transform 1s , opacity 1s;
+    transition: transform 0.5s , opacity 0.5s;
     transform: translateY(100%);
     opacity: 0;
+    -webkit-transition: transform 0.5s , opacity 0.5s;
+    -moz-transition: transform 0.5s , opacity 0.5s;
+    -ms-transition: transform 0.5s , opacity 0.5s;
+    -o-transition: transform 0.5s , opacity 0.5s;
 }
 .product:hover .btn 
 {
