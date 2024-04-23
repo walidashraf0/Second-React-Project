@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Style from './FeaturedProducts.module.css';
 import axios from 'axios';
 import { useQuery } from 'react-query'
@@ -50,19 +51,21 @@ export default function FeaturedProducts() {
             <h2>Featured Products</h2>
             <div className="row">
                 {data?.data.data.map((product) => <div key={product.id} className="col-md-2 gy-4">
+                    <Link to={`/productdetails/${product.id}`}>
                     <div className="product p-2">
-                    <img src={product.imageCover} className='w-100' alt={product.title} />
-                    <h2 className='font-sm text-main fw-bold'>{product.category.name}</h2>
-                    <h2 className='h5 fw-bold'>{product.title.split(' ').slice(0, 2).join(' ')}</h2>
-                    <div className="d-flex justify-content-between mt-3">
-                        <span>{product.price} EGP</span>
-                        <span>
-                            <i className="fas fa-star rating-color"></i>
-                            {product.ratingsAverage}</span>
-                    </div>
+                        <img src={product.imageCover} className='w-100' alt={product.title} />
+                        <h2 className='font-sm text-main fw-bold'>{product.category.name}</h2>
+                        <h2 className='h5 fw-bold'>{product.title.split(' ').slice(0, 2).join(' ')}</h2>
+                        <div className="d-flex justify-content-between mt-3">
+                            <span>{product.price} EGP</span>
+                            <span>
+                                <i className="fas fa-star rating-color"></i>
+                                {product.ratingsAverage}</span>
+                        </div>
 
-                    <button className='btn bg-main text-white w-100 btn-sm mt-2'>Add To Cart</button>
+                        <button className='btn bg-main text-white w-100 btn-sm mt-2'>Add To Cart</button>
                     </div>
+                    </Link>
                 </div>)}
             </div>
         </div>}

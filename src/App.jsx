@@ -9,10 +9,10 @@ import Cart from './Component/Cart/Cart'
 import Brands from './Component/Brands/Brands'
 import Products from './Component/Products/Products'
 import Categories from './Component/Categories/Categories'
+import ProductDetails from './Component/ProductDetails/ProductDetails'
 import CounterContextProvider from './Context/CounterContext'
 import UserTokenProvider from './Context/UserToken'
 import ProtectedRoute from './Component/ProtectedRoute/ProtectedRoute'
-
 
 
 export default function App() {
@@ -21,13 +21,14 @@ export default function App() {
     [
       {
         path: '/', element: <Layout />, children: [
+          { path: 'login', element: <Login /> },
+          { path: 'register', element: <Register /> },
           { index: true, element: <ProtectedRoute><Home/></ProtectedRoute>},
           { path: 'cart', element:<ProtectedRoute> <Cart /></ProtectedRoute> },
           { path: 'brands', element: <ProtectedRoute><Brands /></ProtectedRoute> },
           { path: 'categories', element: <ProtectedRoute><Categories /></ProtectedRoute> },
           { path: 'products', element: <ProtectedRoute><Products /></ProtectedRoute> },
-          { path: 'login', element: <Login /> },
-          { path: 'register', element: <Register /> },
+          { path: 'productdetails/:id', element: <ProtectedRoute><ProductDetails /></ProtectedRoute> },
           { path: '*', element: <Notfound /> },
         ]
       }
