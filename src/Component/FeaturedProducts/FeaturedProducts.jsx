@@ -13,11 +13,11 @@ export default function FeaturedProducts() {
     }
 
     let { isLoading, isError, data, isFetching, refetch } = useQuery('featuredProducts', getFeaturedProducts, {
-        cacheTime: 3000,
+        // cacheTime: 3000,
         // refetchOnMount: false,
         // staleTime: 30000,
-        refetchInterval: 3000,
-        enabled: false
+        // refetchInterval: 3000,
+        // enabled: false
     });
     console.log();
 
@@ -46,10 +46,11 @@ export default function FeaturedProducts() {
                 visible={true}
             />
         </div> : <div className="container py-2">
-            <button className='btn bg-main text-white w-100' onClick={()=> refetch()}>Get Products</button>
+            {/* <button className='btn bg-main text-white w-100' onClick={()=> refetch()}>Get Products</button> */}
             <h2>Featured Products</h2>
             <div className="row">
                 {data?.data.data.map((product) => <div key={product.id} className="col-md-2 gy-4">
+                    <div className="product p-2">
                     <img src={product.imageCover} className='w-100' alt={product.title} />
                     <h2 className='font-sm text-main fw-bold'>{product.category.name}</h2>
                     <h2 className='h5 fw-bold'>{product.title.split(' ').slice(0, 2).join(' ')}</h2>
@@ -60,7 +61,8 @@ export default function FeaturedProducts() {
                             {product.ratingsAverage}</span>
                     </div>
 
-                    {/* <button className='btn bg-main text-white w-100 btn-sm mt-2'>Add To Cart</button> */}
+                    <button className='btn bg-main text-white w-100 btn-sm mt-2'>Add To Cart</button>
+                    </div>
                 </div>)}
             </div>
         </div>}
