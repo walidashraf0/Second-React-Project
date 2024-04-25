@@ -20,6 +20,9 @@ body{
 {
     cursor: pointer;
 }
+.brdr-main {
+    border: solid 1px var(--main-color);
+}
 
 .network {
     padding: 20px;

@@ -13,6 +13,9 @@ import ProductDetails from './Component/ProductDetails/ProductDetails'
 import CounterContextProvider from './Context/CounterContext'
 import UserTokenProvider from './Context/UserToken'
 import ProtectedRoute from './Component/ProtectedRoute/ProtectedRoute'
+import CartContextProvider from './Context/CartContext'
+import toast, { Toaster } from 'react-hot-toast';
+
 
 
 export default function App() {
@@ -34,11 +37,14 @@ export default function App() {
       }
     ]
   )
-  return <>
+  return <CartContextProvider>
     <UserTokenProvider>
       <CounterContextProvider>
         <RouterProvider router={routers}></RouterProvider>
       </CounterContextProvider>
+      <Toaster />
     </UserTokenProvider>
-  </>
+  </CartContextProvider>
+
+
 }

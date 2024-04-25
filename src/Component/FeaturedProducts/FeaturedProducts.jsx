@@ -1,12 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Style from './FeaturedProducts.module.css';
 import axios from 'axios';
 import { useQuery } from 'react-query'
 import { BallTriangle } from 'react-loader-spinner';
+import { CartContext } from '../../Context/CartContext';
+import toast from 'react-hot-toast';
+
+
 
 
 export default function FeaturedProducts() {
+
+    let { addToCart } = useContext(CartContext);
+
+    async function addProductToCart(id) {
+        let response = await addToCart(id);
+        if (response.data.status === 'success') {
+            toast.success('Product is added successfully', {
+                duration: 4000,
+                position: 'top-center'
+            })
+        } else {
+            toast.error('Error adding product to cart')
+        }
+        console.log(response);
+    }
 
     function getFeaturedProducts() {
 
@@ -20,7 +39,6 @@ export default function FeaturedProducts() {
         // refetchInterval: 3000,
         // enabled: false
     });
-    console.log();
 
     // const [products, setProducts] = useState([])
     // const [isLoading, setIsLoading] = useState(false)
@@ -50,22 +68,21 @@ export default function FeaturedProducts() {
             {/* <button className='btn bg-main text-white w-100' onClick={()=> refetch()}>Get Products</button> */}
             <h2>Featured Products</h2>
             <div className="row">
-                {data?.data.data.map((product) => <div key={product.id} className="col-md-2 gy-4">
-                    <Link to={`/productdetails/${product.id}`}>
-                    <div className="product p-2">
-                        <img src={product.imageCover} className='w-100' alt={product.title} />
-                        <h2 className='font-sm text-main fw-bold'>{product.category.name}</h2>
-                        <h2 className='h5 fw-bold'>{product.title.split(' ').slice(0, 2).join(' ')}</h2>
-                        <div className="d-flex justify-content-between mt-3">
-                            <span>{product.price} EGP</span>
-                            <span>
-                                <i className="fas fa-star rating-color"></i>
-                                {product.ratingsAverage}</span>
-                        </div>
-
-                        <button className='btn bg-main text-white w-100 btn-sm mt-2'>Add To Cart</button>
+                {data?.data.data.map((product) => <div key={product.id} className="col-md-2">
+                    <div className="product p-2 cursor-pointer py-3 px-2">
+                        <Link to={`/productdetails/${product.id}`}>
+                            <img src={product.imageCover} className='w-100' alt={product.title} />
+                            <span className='font-sm text-main fw-bolder'>{product.category.name}</span>
+                            <h3 className='h6'>{product.title.split(' ').slice(0, 2).join(' ')}</h3>
+                            <div className="d-flex justify-content-between mt-3">
+                                <span>{product.price} EGP</span>
+                                <span>
+                                    <i className="fas fa-star rating-color"></i>
+                                    {product.ratingsAverage}</span>
+                            </div>
+                        </Link>
+                        <button onClick={() => addProductToCart(product.id)} className='btn bg-main text-white w-100 btn-sm mt-2'>Add To Cart</button>
                     </div>
-                    </Link>
                 </div>)}
             </div>
         </div>}
