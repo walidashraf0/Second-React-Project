@@ -13,6 +13,7 @@ import ProductDetails from './Component/ProductDetails/ProductDetails'
 import CounterContextProvider from './Context/CounterContext'
 import UserTokenProvider from './Context/UserToken'
 import ProtectedRoute from './Component/ProtectedRoute/ProtectedRoute'
+import Profile from './Component/Profile/Profile'
 import CartContextProvider from './Context/CartContext'
 import toast, { Toaster } from 'react-hot-toast';
 
@@ -32,6 +33,7 @@ export default function App() {
           { path: 'categories', element: <ProtectedRoute><Categories /></ProtectedRoute> },
           { path: 'products', element: <ProtectedRoute><Products /></ProtectedRoute> },
           { path: 'productdetails/:id', element: <ProtectedRoute><ProductDetails /></ProtectedRoute> },
+          { path: 'profile', element: <ProtectedRoute><Profile /></ProtectedRoute> },
           { path: '*', element: <Notfound /> },
         ]
       }

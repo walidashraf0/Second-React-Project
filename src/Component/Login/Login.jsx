@@ -13,7 +13,7 @@ export default function Login() {
     let navigate = useNavigate()
     const [error, setError] = useState(null)
     const [loading, setLoading] = useState(false)
-    let {setUserToken} = useContext(UserToken)
+    let {setUserToken, setUserData} = useContext(UserToken)
 
     async function loginSubmit(values) {
         setLoading(true)
@@ -22,10 +22,11 @@ export default function Login() {
                 setError(err.response.data.message)
                 setLoading(false)
             })
-        if (data.message == 'success') {
+        if (data.message === 'success') {
             setLoading(false)
             localStorage.setItem('userToken', data.token)
             setUserToken(data.token)
+            setUserData(data.user)
             navigate('/')
         }
     }
