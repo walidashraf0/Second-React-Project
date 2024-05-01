@@ -16,6 +16,8 @@ import ProtectedRoute from './Component/ProtectedRoute/ProtectedRoute'
 import Profile from './Component/Profile/Profile'
 import CartContextProvider from './Context/CartContext'
 import toast, { Toaster } from 'react-hot-toast';
+import { Provider } from 'react-redux'
+import { x } from './rtx/store'
 
 
 
@@ -41,9 +43,11 @@ export default function App() {
   )
   return <CartContextProvider>
     <UserTokenProvider>
-      <CounterContextProvider>
-        <RouterProvider router={routers}></RouterProvider>
-      </CounterContextProvider>
+      {/* <CounterContextProvider> */}
+      <Provider store={x}>
+        <RouterProvider router={routers} />
+      </Provider>
+      {/* </CounterContextProvider> */}
       <Toaster />
     </UserTokenProvider>
   </CartContextProvider>
