@@ -2,15 +2,24 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 let counterSlice = createSlice({
-    initialState: {id: 1, name: "wego"},
-    name: "counter",
+    initialState: {counter: 0, userName: 'Wego'},
+    name: "counterSlice",
     reducers: {
-        changeName: () => {
-            console.log("hello");
+        changeName: (state, actions) => {
+            state.userName = "Zien";
+        },
+        increase: (state) => {
+            state.counter +=1;
+        },
+        decrease: (state) => {
+            state.counter -=1;
+        },
+        increaseByAmount: (state, action) => {
+            state.counter +=action.payload;
         }
     }
 })
 
-export let { changeName } = counterSlice.actions;
-let counterReducer = counterSlice.reducer
-export default counterReducer
+export let counterReducer = counterSlice.reducer
+export let { changeName, increase, decrease, increaseByAmount } = counterSlice.actions;
+// export default counterReducer

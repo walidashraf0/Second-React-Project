@@ -6,7 +6,10 @@ import Slider from 'react-slick';
 
 
 
+
 export default function CategorySlider() {
+
+    
 
     var settings = {
         dots: true,

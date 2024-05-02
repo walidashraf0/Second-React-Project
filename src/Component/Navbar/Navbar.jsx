@@ -3,13 +3,17 @@ import Style from './Navbar.module.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { CounterContext } from '../../Context/CounterContext';
 import { UserToken } from '../../Context/UserToken';
-
+import { useSelector } from 'react-redux';
+import logo from '../../Assets/finalProject assets/images/freshcart-logo.svg'
 
 export default function Navbar() {
     
+    let { userName } = useSelector((state) => {
+        return state.counterData;
+    })
     let navigate = useNavigate()
 
-    let { count } = useContext(CounterContext); // Inicializamos el context
+    // let { count } = useContext(CounterContext); // Inicializamos el context
 
     let { userToken, setUserToken } = useContext(UserToken);
 
@@ -23,14 +27,16 @@ export default function Navbar() {
     return <>
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
             <div className="container-fluid">
-                <Link className="navbar-brand" to={'/'}>WEGO</Link>
+                <Link className="navbar-brand" to={'/'}>
+                    <img src={logo} alt="Wego Market" />
+                </Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     {userToken ? <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <Link className="nav-link" to={'/'}>Home {count}</Link>
+                            <Link className="nav-link" to={'/'}>Home</Link>
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link" to={'products'}>Products</Link>
