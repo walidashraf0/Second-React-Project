@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { CounterContext } from '../../Context/CounterContext';
 import { UserToken } from '../../Context/UserToken';
 import { useSelector } from 'react-redux';
-import logo from '../../Assets/finalProject assets/images/freshcart-logo.svg'
+import logo from '../../Assets/images/freshcart-logo.svg'
 
 export default function Navbar() {
     

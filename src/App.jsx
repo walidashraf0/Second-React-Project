@@ -18,6 +18,8 @@ import CartContextProvider from './Context/CartContext'
 import toast, { Toaster } from 'react-hot-toast';
 import { Provider } from 'react-redux'
 import { x } from './rtx/store'
+import Address from './Component/address/address'
+import Orders from './Component/Orders/Orders'
 
 
 
@@ -34,8 +36,11 @@ export default function App() {
           { path: 'brands', element: <ProtectedRoute><Brands /></ProtectedRoute> },
           { path: 'categories', element: <ProtectedRoute><Categories /></ProtectedRoute> },
           { path: 'products', element: <ProtectedRoute><Products /></ProtectedRoute> },
-          { path: 'productdetails/:id', element: <ProtectedRoute><ProductDetails /></ProtectedRoute> },
+          { path: 'address', element: <ProtectedRoute><Address /></ProtectedRoute> },
+          { path: 'allorders', element: <ProtectedRoute><Orders /></ProtectedRoute> },
           { path: 'profile', element: <ProtectedRoute><Profile /></ProtectedRoute> },
+          
+          { path: 'productdetails/:id', element: <ProtectedRoute><ProductDetails /></ProtectedRoute> },
           { path: '*', element: <Notfound /> },
         ]
       }

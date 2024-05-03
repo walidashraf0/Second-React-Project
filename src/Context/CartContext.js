@@ -55,9 +55,18 @@ function updateProductQuantity(productId, count) {
     .catch((err) => err);
 }
 
+function onlinePayment(cartId, url, values) {
+    return axios.post(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=${url}`, {
+      shippingAddress: values, // Body
+    }, {
+        headers: headers // Header
+    }).then((response)=> response)
+    .catch((err) => err);
+}
+
 export default function CartContextProvider(props) {
   return (
-    <CartContext.Provider value={{ addToCart, getLoggedCart, removeCartItem, updateProductQuantity, clearCartItems }}>
+    <CartContext.Provider value={{ addToCart, getLoggedCart, removeCartItem, updateProductQuantity, onlinePayment, clearCartItems }}>
       {props.children}
     </CartContext.Provider>
   );

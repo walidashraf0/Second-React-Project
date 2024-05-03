@@ -2,9 +2,13 @@ import React, { useContext, useEffect, useState } from 'react';
 import Style from './Cart.module.css';
 import { CartContext } from '../../Context/CartContext';
 import { BallTriangle } from 'react-loader-spinner';
+import { Link } from 'react-router-dom';
+import useNetwork from '../../Hooks/useNetwork';
 
 
 export default function Cart() {
+
+    let x = useNetwork();
 
     let { getLoggedCart, removeCartItem, updateProductQuantity, clearCartItems } = useContext(CartContext);
     const [cartDetails, setCartDetails] = useState(null)
@@ -28,6 +32,7 @@ export default function Cart() {
     async function getCart() {
         let { data } = await getLoggedCart();
         setCartDetails(data);
+        console.log(data);
     }
 
     useEffect(()=> {
@@ -59,8 +64,12 @@ export default function Cart() {
                     </div>
                 </div>
                 <button onClick={()=> removeItem(product.product.id)} className='btn p-0'><i className='fas fa-trash text-danger font-sm'></i> Remove</button>
+
             </div>
         </div>)}
+
+        <Link to={"/address"} className='btn bg-main m-3 w-25 text-white'>Online Payment</Link>
+        <button className='btn bg-main m-3 w-25 text-white'>Cash On Delivery</button>
                 <button onClick={()=> clearCart()} className='btn p-0'><i className='fas fa-trash text-danger font-sm'></i> Clear</button>
     </div>: <section id='loading' className='d-flex justify-content-center align-items-center'>
         <BallTriangle
@@ -74,5 +83,6 @@ export default function Cart() {
                 visible={true}
             />
             </section>}
+            {x}
     </>
 }

@@ -6,9 +6,12 @@ import { Helmet } from 'react-helmet';
 import Style from './Home.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeName } from '../../rtx/slices/CounterSlice'
+import useNetwork from '../../Hooks/useNetwork';
 
 
 export default function Home() {
+
+    let x = useNetwork();
 
     {/* Redux test */}
     let { name } = useSelector((state)=> {
@@ -26,6 +29,7 @@ export default function Home() {
         </Helmet>
         {/* Redux test */}
         {console.log(`state: ${name}`)}
+        {x}
         <MainSlider />
         <CategorySlider />
         <FeaturedProducts />
