@@ -23,14 +23,6 @@ export default function useNetwork() {
         });
     }
 
-
-
-
-
-
-
-
-
     return <>
     {!isOnline? <div className='network'> <i className='fas fa-wifi'></i> You are Offline!</div>: ''}
     </>

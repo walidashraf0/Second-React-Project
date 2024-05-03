@@ -24,7 +24,7 @@ export default function FeaturedProducts() {
         } else {
             toast.error('Error adding product to cart')
         }
-        console.log(response);
+        // console.log(response);
     }
 
     function getFeaturedProducts() {

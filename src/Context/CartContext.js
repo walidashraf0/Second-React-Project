@@ -1,5 +1,5 @@
 import axios from "axios";
-import { createContext } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export let CartContext = createContext();
 
@@ -65,8 +65,21 @@ function onlinePayment(cartId, url, values) {
 }
 
 export default function CartContextProvider(props) {
+
+  const [cartId, setCartId] = useState(null);
+
+  async function getCart() {
+    let { data } = await getLoggedCart();
+    setCartId(data?.data._id);
+    // console.log(data?.data._id);
+  }
+
+  useEffect(()=> {
+    getCart();
+  }, [])
+
   return (
-    <CartContext.Provider value={{ addToCart, getLoggedCart, removeCartItem, updateProductQuantity, onlinePayment, clearCartItems }}>
+    <CartContext.Provider value={{ cartId, addToCart, getLoggedCart, removeCartItem, updateProductQuantity, onlinePayment, clearCartItems }}>
       {props.children}
     </CartContext.Provider>
   );

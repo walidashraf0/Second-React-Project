@@ -24,7 +24,7 @@ export default function CategorySlider() {
     }
 
     let { isLoading, isError, data } = useQuery('categorySlider', getCategories)
-    console.log(data?.data.data);
+    // console.log(data?.data.data);
 
 
 
