@@ -1,27 +1,49 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import Style from './Categories.module.css';
 
 
 export default function Categories() {
 
-    const [counter, setCounter] = useState(0);
+    const [counter1, setCounter1] = useState(0);
+    const [counter2, setCounter2] = useState(0);
 
-    let render = useRef(0);
-    let myInput = useRef();
+    let checkCount2Even = useMemo(()=> {
+        console.log("Check Even Counter");
+        return counter2%2 === 0;
+    }, [counter2]);
 
-    useEffect(()=> {
-        render.current +=1;
-        myInput.current.focus();
-    }, [])
+    function increment1() {
+        setCounter1(counter1+1);
+    }
+
+    function increment2() {
+        setCounter2(counter2+1)
+    }
+
+    // Before UseMemo
+    // function checkCount2Even() {
+    //     console.log("Check Even Counter");
+    //     return counter2%2 === 0;
+    // }
 
 
     
     return <>
-    <h2>Categories</h2>
-    <h3>Counter: {counter}</h3>
-    <h3>Render: {render.current}</h3>
-    <input ref={myInput} />
-    <button onClick={()=> setCounter(counter+1)} className='btn m-2 btn-info text-white'>+</button>
-    <button onClick={()=> setCounter(counter-1)} className='btn m-2 btn-info text-white'>-</button>
+    <div className="container text-center">
+        <div className="row">
+            <div className="col-md-6">
+                <h1>Counter1</h1>
+                <h6>{counter1}</h6>
+                <button onClick={()=> increment1()} className='btn btn-info'>+</button>
+            </div>
+            <div className="col-md-6">
+                <h1>Counter2</h1>
+                <h6>{counter2}</h6>
+                <h5>{checkCount2Even? "Even": "Odd"}</h5>
+                <button onClick={()=> increment2()} className='btn btn-info'>+</button>
+            </div>
+        </div>
+    </div>
+    
     </>
 }
