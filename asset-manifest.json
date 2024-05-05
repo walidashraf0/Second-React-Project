@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/Second-React-Project/static/css/main.ba46f68a.css",
+    "main.js": "/Second-React-Project/static/js/main.72a706c5.js",
+    "static/media/fa-solid-900.ttf": "/Second-React-Project/static/media/fa-solid-900.bacd5de623fb563b961a.ttf",
+    "static/media/slider-image-1.jpeg": "/Second-React-Project/static/media/slider-image-1.3c3940ee0f1c3b17ff9a.jpeg",
+    "static/media/grocery-banner.png": "/Second-React-Project/static/media/grocery-banner.2c56649c9cbe2e19b86f.png",
+    "static/media/fa-brands-400.ttf": "/Second-React-Project/static/media/fa-brands-400.60127e352b7a11f7f1bc.ttf",
+    "static/media/slider-image-3.jpeg": "/Second-React-Project/static/media/slider-image-3.7e5c9f7a513f6db6dd5e.jpeg",
+    "static/media/slider-image-2.jpeg": "/Second-React-Project/static/media/slider-image-2.e510b0de8a4d96a1d5ad.jpeg",
+    "static/media/grocery-banner-2.jpeg": "/Second-React-Project/static/media/grocery-banner-2.7a4a78a90acc3d5847cb.jpeg",
+    "static/media/fa-solid-900.woff2": "/Second-React-Project/static/media/fa-solid-900.4d986b00ff9ca3828fbd.woff2",
+    "static/media/fa-brands-400.woff2": "/Second-React-Project/static/media/fa-brands-400.455ea818179b4def0c43.woff2",
+    "static/media/fa-regular-400.ttf": "/Second-React-Project/static/media/fa-regular-400.eb91f7b948a42799f678.ttf",
+    "static/media/fa-regular-400.woff2": "/Second-React-Project/static/media/fa-regular-400.21cb8f55d8e0c5b89751.woff2",
+    "static/media/fa-v4compatibility.ttf": "/Second-React-Project/static/media/fa-v4compatibility.c8e090db312b0bea2aa2.ttf",
+    "static/media/freshcart-logo.svg": "/Second-React-Project/static/media/freshcart-logo.53f7a424c3aedc30a0fb46dc2278137c.svg",
+    "static/media/fa-v4compatibility.woff2": "/Second-React-Project/static/media/fa-v4compatibility.cf7f5903d06b79ad60f1.woff2",
+    "static/media/slick.svg": "/Second-React-Project/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/Second-React-Project/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/Second-React-Project/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/Second-React-Project/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/Second-React-Project/index.html",
+    "main.ba46f68a.css.map": "/Second-React-Project/static/css/main.ba46f68a.css.map",
+    "main.72a706c5.js.map": "/Second-React-Project/static/js/main.72a706c5.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ba46f68a.css",
+    "static/js/main.72a706c5.js"
+  ]
+}
